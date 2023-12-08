@@ -1,0 +1,29 @@
+syntax = 'proto3';
+
+package auth;
+
+option go_package = 'energoww.auth.v1.authv1';
+
+service Auth {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+}
+
+message RegisterRequest {
+  string email = 1; // Registered user email
+  string password = 2; // Registered user password
+}
+
+message RegisterResponse {
+  string user_uuid = 1; // Registered user uuid
+}
+
+message LoginRequest {
+  string email = 1; // Registered user email
+  string password = 2; // Registered user password
+  string app_uuid = 3; // App uuid to login to
+}
+
+message LoginResponse {
+  string token = 1; // JWT auth token for logged user
+}
